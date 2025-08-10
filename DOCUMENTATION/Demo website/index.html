@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaCore - Institute Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #3498DB;
+            --accent: #E74C3C;
+            --neutral: #ECF0F1;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--primary);
+        }
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+        }
+        .btn-primary {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+        .btn-outline-primary {
+            color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--neutral) 0%, white 100%);
+            padding: 100px 0;
+        }
+        .feature-card {
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+        }
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-building"></i> InstaCore
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a href="login.html" class="btn btn-outline-primary">Login</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a href="#" class="btn btn-primary">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Streamline Your Institute Operations</h1>
+            <p class="lead mb-5">All-in-one management for students, faculty, courses, and finances</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="login.html" class="btn btn-primary btn-lg px-4">Get Started</a>
+                <a href="#" class="btn btn-outline-primary btn-lg px-4">Watch Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-people-fill feature-icon mb-3"></i>
+                            <h4>Student Management</h4>
+                            <p>Track enrollments, attendance & grades with our intuitive student portal</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-calendar-week feature-icon mb-3"></i>
+                            <h4>Course Scheduling</h4>
+                            <p>Automate timetables, assignments & exams with smart scheduling tools</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center p-4">
+                            <i class="bi bi-graph-up feature-icon mb-3"></i>
+                            <h4>Financial Reports</h4>
+                            <p>Generate invoices, track payments & create financial reports instantly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">What Our Users Say</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="testimonial">
+                        <p class="mb-4">"This system saved us 20+ hours weekly! The automation features are incredible and the interface is so intuitive."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="User">
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <small>Director, Tech Valley Institute</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 InstaCore. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
