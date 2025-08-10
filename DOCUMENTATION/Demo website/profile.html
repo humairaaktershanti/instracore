@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - InstaCore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #3498DB;
+            --accent: #E74C3C;
+            --neutral: #ECF0F1;
+            --light: #F8F9FA;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--neutral);
+            color: var(--primary);
+        }
+        
+        /* Profile Header */
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
+            color: white;
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .profile-header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+        
+        .edit-icon {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: var(--secondary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .edit-icon:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+        }
+        
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .profile-role {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+        }
+        
+        /* Tabs */
+        .profile-tabs {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: -30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .nav-tabs {
+            border-bottom: none;
+            padding: 0 20px;
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--primary);
+            border: none;
+            padding: 15px 20px;
+            font-weight: 500;
+            border-radius: 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .nav-tabs .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            padding: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Form Elements */
+        .form-control, .form-select {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.15);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .form-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-primary {
+            color: var(--secondary);
+            border-color: var(--secondary);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.875rem;
+        }
+        
+        /* Cards */
+        .settings-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .settings-card h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Security Settings */
+        .security-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .security-item:last-child {
+            border-bottom: none;
+        }
+        
+        .security-info h6 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .security-info p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .security-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-active {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-inactive {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        /* Sessions */
+        .session-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .session-item:hover {
+            background-color: #e9ecef;
+        }
+        
+        .session-device {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .session-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .session-icon.desktop {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .session-icon.mobile {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .session-details h6 {
+            margin-bottom: 2px;
+            font-weight: 600;
+        }
+        
+        .session-details p {
+            margin-bottom: 0;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        /* Toggle Switch */
+        .form-check-input:checked {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .form-switch .form-check-input {
+            width: 48px;
+            height: 24px;
+        }
+        
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        .toast {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .toast-header {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-stats {
+                gap: 20px;
+            }
+            
+            .nav-tabs {
+                padding: 0 10px;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="bi bi-building"></i> InstaCore
+            </a>
+            <div class="ms-auto">
+                <a href="dashboard.html" class="btn btn-light">
+                    <i class="bi bi-arrow-left"></i> Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="container profile-header-content">
+            <div class="text-center">
+                <div class="profile-img-container">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="profile-img" alt="Profile">
+                    <div class="edit-icon" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                        <i class="bi bi-camera-fill"></i>
+                    </div>
+                </div>
+                <h1 class="profile-name">Sarah Johnson</h1>
+                <p class="profile-role">Administrator | Tech Valley Institute</p>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">1,250</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">45</div>
+                        <div class="stat-label">Courses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Years</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Tabs -->
+    <div class="container">
+        <div class="profile-tabs">
+            <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button">Personal Info</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" type="button">Account Settings</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="notifications-tab" data-bs-toggle="tab" data-bs-target="#notifications" type="button">Notifications</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button">Security</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="profileTabsContent">
+                <!-- Personal Info Tab -->
+                <div class="tab-pane fade show active" id="personal" role="tabpanel">
+                    <h4 class="section-title">Personal Information</h4>
+                    <form id="personalForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" value="Sarah" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" value="Johnson" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" value="s.johnson@institute.edu" required>
+                                <div class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" value="+1 (555) 123-4567">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="department" class="form-label">Department</label>
+                                <select class="form-select" id="department">
+                                    <option selected>Administration</option>
+                                    <option>Academic Affairs</option>
+                                    <option>Student Services</option>
+                                    <option>Finance</option>
+                                    <option>IT Support</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="position" class="form-label">Position</label>
+                                <input type="text" class="form-control" id="position" value="System Administrator">
+                            </div>
+                            <div class="col-12">
+                                <label for="bio" class="form-label">Bio</label>
+                                <textarea class="form-control" id="bio" rows="4">Managing institute operations since 2018. Passionate about educational technology and improving administrative processes. Specialized in student information systems and financial management.</textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <button type="button" class="btn btn-outline-primary ms-2">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Account Settings Tab -->
+                <div class="tab-pane fade" id="account" role="tabpanel">
+                    <h4 class="section-title">Account Settings</h4>
+                    
+                    <div class="settings-card">
+                        <h5>General Preferences</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="language" class="form-label">Language</label>
+                                <select class="form-select" id="language">
+                                    <option selected>English (US)</option>
+                                    <option>Spanish</option>
+                                    <option>French</option>
+                                    <option>German</option>
+                                    <option>Chinese</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="timezone" class="form-label">Timezone</label>
+                                <select class="form-select" id="timezone">
+                                    <option selected>(GMT-05:00) Eastern Time (US & Canada)</option>
+                                    <option>(GMT-06:00) Central Time (US & Canada)</option>
+                                    <option>(GMT-07:00) Mountain Time (US & Canada)</option>
+                                    <option>(GMT-08:00) Pacific Time (US & Canada)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dateFormat" class="form-label">Date Format</label>
+                                <select class="form-select" id="dateFormat">
+                                    <option selected>MM/DD/YYYY</option>
+                                    <option>DD/MM/YYYY</option>
+                                    <option>YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="timeFormat" class="form-label">Time Format</label>
+                                <select class="form-select" id="timeFormat">
+                                    <option selected>12-hour (AM/PM)</option>
+                                    <option>24-hour</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h5>Communication Preferences</h5>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="emailNotif" checked>
+                                <label class="form-check-label" for="emailNotif">
+                                    Email Notifications
+                                </label>
+                            </div>
+                            <div class="form-text">Receive important updates and alerts via email</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="smsNotif">
+                                <label class="form-check-label" for="smsNotif">
+                                    SMS Notifications
+                                </label>
+                            </div>
+                            <div class="form-text">Receive urgent notifications via text message</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="promotionNotif">
+                                <label class="form-check-label" for="promotionNotif">
+                                    Promotional Offers
+                                </label>
+                            </div>
+                            <div class="form-text">Receive information about new features and special offers</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="updateNotif" checked>
+                                <label class="form-check-label" for="updateNotif">
+                                    System Updates
+                                </label>
+                            </div>
+                            <div class="form-text">Get notified about system maintenance and updates</div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary">Save Preferences</button>
+                </div>
+
+                <!-- Notifications Tab -->
+                <div class="tab-pane fade" id="notifications" role="tabpanel">
+                    <h4 class="section-title">Notification Settings</h4>
+                    
+                    <div class="settings-card">
+                        <h5>Email Notifications</h5>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="studentReg" checked>
+                                <label class="form-check-label" for="studentReg">
+                                    New Student Registration
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="feePayment" checked>
+                                <label class="form-check-label" for="feePayment">
+                                    Fee Payment Received
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="courseUpdate">
+                                <label class="form-check-label" for="courseUpdate">
+                                    Course Updates
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="systemAlerts" checked>
+                                <label class="form-check-label" for="systemAlerts">
+                                    System Alerts
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h5>In-App Notifications</h5>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="messages" checked>
+                                <label class="form-check-label" for="messages">
+                                    Direct Messages
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="mentions" checked>
+                                <label class="form-check-label" for="mentions">
+                                    Mentions
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="reminders">
+                                <label class="form-check-label" for="reminders">
+                                    Reminders
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary">Update Notification Settings</button>
+                </div>
+
+                <!-- Security Tab -->
+                <div class="tab-pane fade" id="security" role="tabpanel">
+                    <h4 class="section-title">Security Settings</h4>
+                    
+                    <div class="settings-card">
+                        <h5>Password</h5>
+                        <form id="passwordForm">
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label">Current Password</label>
+                                <input type="password" class="form-control" id="currentPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="newPassword" required>
+                                <div class="form-text">Use 8 or more characters with a mix of letters, numbers & symbols</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </form>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h5>Two-Factor Authentication</h5>
+                        <div class="security-item">
+                            <div class="security-info">
+                                <h6>SMS Authentication</h6>
+                                <p>Receive verification codes via SMS</p>
+                            </div>
+                            <div class="security-status">
+                                <span class="status-badge status-active">Active</span>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="smsAuth" checked>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <div class="security-info">
+                                <h6>Authenticator App</h6>
+                                <p>Use an authenticator app for verification</p>
+                            </div>
+                            <div class="security-status">
+                                <span class="status-badge status-inactive">Inactive</span>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="appAuth">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h5>Active Sessions</h5>
+                        <div class="session-item">
+                            <div class="session-device">
+                                <div class="session-icon desktop">
+                                    <i class="bi bi-laptop"></i>
+                                </div>
+                                <div class="session-details">
+                                    <h6>Chrome on Windows</h6>
+                                    <p>New York, USA • Today 10:30 AM</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-outline-danger">Revoke</button>
+                        </div>
+                        <div class="session-item">
+                            <div class="session-device">
+                                <div class="session-icon mobile">
+                                    <i class="bi bi-phone"></i>
+                                </div>
+                                <div class="session-details">
+                                    <h6>InstaCore Mobile App</h6>
+                                    <p>New York, USA • Yesterday 05:15 PM</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-outline-danger">Revoke</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Profile Picture Modal -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">Update Profile Picture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="rounded-circle" width="120" height="120" alt="Profile">
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary">Upload New Photo</button>
+                        <button class="btn btn-outline-secondary">Remove Photo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container">
+        <div class="toast" id="successToast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <strong class="me-auto">Success</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Your changes have been saved successfully!
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Form submission handlers
+        document.getElementById('personalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast();
+        });
+        
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast();
+        });
+        
+        // Show toast notification
+        function showToast() {
+            const toast = new bootstrap.Toast(document.getElementById('successToast'));
+            toast.show();
+        }
+        
+        // Toggle switches animation
+        document.querySelectorAll('.form-check-input').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const statusBadge = this.closest('.security-status')?.querySelector('.status-badge');
+                if (statusBadge) {
+                    if (this.checked) {
+                        statusBadge.textContent = 'Active';
+                        statusBadge.className = 'status-badge status-active';
+                    } else {
+                        statusBadge.textContent = 'Inactive';
+                        statusBadge.className = 'status-badge status-inactive';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
