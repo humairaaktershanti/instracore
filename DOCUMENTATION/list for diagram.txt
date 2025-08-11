@@ -1,0 +1,13 @@
+Entity-Relationship Diagram (ERD)
+
+Use Case Diagram
+
+Class Diagram
+
+Sequence Diagram
+
+Data Flow Diagram (DFD)
+
+Component Diagram
+
+Deployment Diagram
