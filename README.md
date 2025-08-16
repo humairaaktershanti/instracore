@@ -168,7 +168,7 @@ The system provides dashboards and features tailored to each role
     -   `StudentApp`
 -   Index page:
     -   Public info (about, contact, testimonials)
-    -   Login/Signup
+    -   Login
     -   Authenticated users are redirected to their dashboards
 -   Layout:
     -   `master.html` in `AuthApp`
