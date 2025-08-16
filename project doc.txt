@@ -1,18 +1,17 @@
-Institute Management system
+Institute Management System
 
-Our project have many user role(Admin, Faculty, Teacher, Student, Finance) but don't have  any Registration form, only Login form.
-The super admin can create a admin and admin will be create Teacher, Student and Finance Account and they will be login using given username and password from admin. All user role have own profile option and they can Edit there own profile and chance them password.
+Our project has many user roles (Admin, Faculty, Teacher, Student, Finance) but, doesn't have  a Registration form, only Login form.
+The super admin (we) can create an admin and admin will create Teacher, Student, and Finance Account, and they will be login using given username and password from admin. All user roles have their own profile options, and they can edit their own profile and change their password.
 
-The Dashboard have separate by user role, like Admin dashboard, Teacher dashboard, Student dashboard, and Faculty dashboard.
+The Dashboard is separated by user role, like Admin dashboard, Teacher dashboard, Student dashboard, and Faculty dashboard.
 
 Admin dashboard have all section summary, like total students and active student, inactive student, total teacher and active teacher, Inactive teacher, total course and active course Inactive course, total Stuff and active stuff, inactive stuff, course overview, active course and inactive course Attendance list(student attendance details, teacher attendance details, staff attendance details ) with bar, All events details, Notice board, Accounts details(Total earning, total expense, total fees collection, student not paid .......
 
-Teacher dashboard have specific teacher daily class routine, full month attendance summary, Lesson plan....
+Teacher dashboard has specific teacher daily class routine, a full month attendance summary, Lesson plan....
 
-Student dashboard have student attendance, daily classes list, Schedules, student performance bar, Exam results, leave status, Fees reminder, notice board, syllabus 
+Student dashboard has student attendance, daily classes list, Schedules, student performance bar, Exam results, leave status, Fees reminder, notice board, syllabus
 
-Parent dashboard have event list, statistics, leave status and home works and 
-Exam results
+Parent dashboard has event list, statistics, leave status, homework and Exam results
 
 
 people section---------------
@@ -20,7 +19,7 @@ student menu: All students(student grid, filtered by class and section and stude
 
 parant menu: All parant(filtered by parant name and child name), Parant list(view in table)
 
-Teacher menu: All teachers(Like all students), teacher list(view in table), teacher details(view in card), routine(time table, filtered by month, daily class routin details with subject name and time and room number)
+Teacher menu: All teachers(Like all students), teacher list(view in table), teacher details(view in card), routine(time table, filtered by month, daily class routine details with subject name, time and room number)
 
 
 Academic section-----------------
