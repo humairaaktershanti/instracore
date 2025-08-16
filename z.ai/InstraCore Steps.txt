@@ -13,7 +13,17 @@ Sub User Roles:
 
 ### Dashboard based on Roles:
 
+> All User can edit there own profile [image, name, bio, date_of_birth, phone, email, gender, location, country, Social Links eg. facebook, twitter, instagram, linkedin]
+
 #### Admin Dashboard:
+
+	Sections:
+	Summary: total students (active, inactive), total teachers (active, inactive), total courses (active, inactive), total staff (active, inactive)
+	Course overview: active and inactive courses
+	Attendance list: student, teacher, staff attendance (with bar charts)
+	Events details
+	Notice board
+	Accounts details: total earning, total expense, total fees collection, students who haven't paid
 
 > On Dashboard, view all kind of summary like total (current/old) - employee, students, courses, Accounts-Balances or like this.
 > From Dashboard, Admin can even view individual items and if need then *download* that.
@@ -22,20 +32,119 @@ Sub User Roles:
 
 > On Dashboard, view all kind of summary like total (current/old) - teacher, students, courses, etc.
 > From Dashboard, Faculty can even view individual items and if need then *download* that. (student/courses related)
+> Add offline based course from add section, [time, description, what to do, price etc fact]
+> Offline based course need to assign one or many teacher
+> Course have close option
+> List for accept or redirect that course are close or not [based on teacher requirement]
+
+#### HR Dashboard:
+
+> On Dashboard, view all kind of summary like total (current/old) - Employee [with out Admin]
+> On Dashboard, view all applied jobs and call for an interview
+> From Dashboard, HR can even view individual items and if need then *download* that. (Employee related)
+
+#### Finance Dashboard:
+
+> On Dashboard, view all kind of summary like total (current/old) - Admin, Employee selary, Spends, and other all kind of info about tranjections
+> On Dashboard, view all offered selary on list and have accepted or redirect button
+> From Dashboard, Finance can even view individual expenses and goods (money related) and if need then *download* that.
+
+#### Teacher Dashboard:
+
+	Daily class routine
+	Full month attendance summary
+	Lesson plan
+
+###### Type1: * Online *
+> Add online based course from add section, [time, description, what to do, price etc fact]
+> view there own course
+> Course have expire option
+
+###### Type2: * Offline * [Regular and Diploma]
+> view there accepted courses
+> Can call gardian meaning [Send link on gardian email/phone]
+
+#### Student Dashboard:
+
+	Student attendance
+	Daily classes list
+	Schedules
+	Student performance bar
+	Exam results
+	Leave status
+	Fees reminder
+	Notice board
+	Syllabus
+	Certificate section
+
+> View available All Types of course
+> can buy course from all course list (Online course)
+> Register *Regular* and *Diploma* course as well [for Regular, only one on a single time]
+> View there all completed course and certificate on another section
 
 ### Permission:
 
 #### Admin:
 
 > Admin can create, edit [username and password], delete any kind of employee [even another Admin too]. (Do not need any permission, Just notify on _Finance_ for selary part)
+> Need to approve after HR's accepted jobs
 
 #### Faculty:
 
 > Faculty can not open there own account (admin create it)
 > Thay can create, edit [username and password], delete _Student_
 
+#### HR:
+
+> HR can make job post for Employees
+> HR can offer selary over job post [but need Finance accepted or not]
+
+#### Finance:
+
+> Need parmition for selary accepted (HR job posts [for HR] and course price [from Teacher])
+> Need to calculate all Finance related costs.
+
+#### Teacher:
+
+###### Type1: * Online *
+> Save sales and get money info before delete or expire course
+> Actions on course [CRUD]
+
+###### Type2: * Offline * [Regular and Diploma]
+> Accept course that adds assignments to it or reject that
+> can start class and make assessment on there course related Students
+> Can close this course [need Faculty parmition]
+
+#### Student:
+
+> view all regular, diploma and online course (from there registration)
+	>> If done and pass on online exam then get *certificate* [for online]
+	>> If done and pass on offline exam then apply for *certificate* [for offline (Regular and Diploma)]
+> certificate save another model, that can not modify anyone [with out Admin, Admin can DELETE it]
+> Send all money, course registration, results related info on gardian mail [every actions], send monthly report on gardian mail
+
+### Instructions for django ~mastering~:
+
+- Project name is InstraCore
+- Have individual app for `AuthApp`, `AdminApp`, `EmployeeApp`, `StudentApp`
+	- `EmployeeApp handel all employee related dashboards and actions`,
+	- `All app have there own individual model, view, urls and actions`
+- Have a index page for not authenticated user, if authenticated then can't show it, then index = there own dashboard
+- index page have Log In, sign Up Button, all public summary on Institute, students and parents comments, about, contact atc on a single page
+- If login then redirect there own dashboard
+- All feature according to requirement [dashboard]
+- Have a static common footer [year use from js] for every page
+- Have a dinamic nav bar according to user (if else parmition on django)
+- Nav bar have profile icon, if drag on icon then show view profile, student have panding cost, teacher have upcomming class, and all other user have like as well, logout option
+- Have a master.html page on AuthApp that cantain all related css, nav, block body, footer etc
+- Need all css on static file and all app have there own css and js [js if need]
+- All app need there own templates folder and all django (.html) file on there own apps templates folder
+
 ### Basic note:
 
+> Some Employee Group and User/Customar Group have a Choice field for Sub Category, eg.:
+	`Student = Regular [for Regular class], Online [Buy Course, complete and get certificate from online], Diploma [for short course]`,
+	`Teacher = Subject based (math, biology, website with python, HTML CSS short course, etc) [Regular and diploma], Course [online based]`,
 > If any one delete any account, then delete all but need to download there data [selary, expanse, due, certificate, etc (role based)] and save it on system (trash type model)
 > Any member can update there own profile
 > After Login on first time, need to change password (if have default password then show it)
@@ -43,144 +152,9 @@ Sub User Roles:
 > Need Monthly expanse sheet so, need a expanse (maybe a Django Model) controller
 > Need to manage student fee collection and other option to get there expanse.
 > Need to prepare monthly expanse sheet for every employee [_Admin_ and _Finance_ can view summary on dashboard]
+> use Bootstrap for styling
+> All actions [CRUD] are saved on a separate model
+> All actions send on Admin or role based dashboard as notifications
+> Manage notifications using this separate model
 
-Steps:
-
-Design the login page with a form for username and password.
-After login, based on the user role, redirect to the respective dashboard.
-Each dashboard will have a navigation bar with sections relevant to that role.
-We'll design the following dashboards: Admin, Teacher, Student, Parent, and Faculty (Note: Faculty might be similar to Teacher? We'll clarify. But from the description, it seems Faculty is a separate role. However, the problem states: Admin will create Teacher, Student, and Finance. So Faculty might be included in Teacher? Or perhaps Faculty is a higher role? Let's assume Faculty is a separate role and we'll design accordingly.)
-But note: The problem says "Admin dashboard, Teacher dashboard, Student dashboard, and Faculty dashboard". So we have four dashboards.
-
-However, the problem also says: "Parent dashboard". So we have five roles: Admin, Faculty, Teacher, Student, Parent.
-
-But the creation: Admin creates Teacher, Student, and Finance. So what about Faculty and Parent?
-Let's assume:
-
-Admin can create all roles: Faculty, Teacher, Student, Parent, Finance.
-Or, Faculty might be created by Admin as well? The problem doesn't specify. We'll design the system to have these roles.
-We'll design the following:
-
-Login page
-Admin Dashboard
-Faculty Dashboard
-Teacher Dashboard
-Student Dashboard
-Parent Dashboard
-Finance Dashboard? (The problem mentions Finance role, but no dashboard description. We'll assume Finance has a dashboard too? But the problem doesn't describe. We'll skip for now and focus on the described ones.)
-However, the problem says: "All user roles have their own profile options". So we must have a profile page for each.
-
-We'll break down the project:
-
-Login Page:
-Simple form with username and password.
-Submit button.
-After Login:
-Check the role and redirect to the respective dashboard.
-Dashboards:
-Admin Dashboard:
-Sections:
-Summary: total students (active, inactive), total teachers (active, inactive), total courses (active, inactive), total staff (active, inactive)
-Course overview: active and inactive courses
-Attendance list: student, teacher, staff attendance (with bar charts)
-Events details
-Notice board
-Accounts details: total earning, total expense, total fees collection, students who haven't paid
-Faculty Dashboard: (Note: The problem doesn't describe Faculty dashboard. We'll assume it's similar to Admin but with limited access? Or perhaps it's for managing faculty members? Since the problem doesn't specify, we'll leave it for now and focus on the described ones. Alternatively, we can make it similar to Admin but without the financial details? Or we can skip and note that the problem didn't specify.)
-But the problem says: "Faculty dashboard" but no description. We'll design a placeholder for Faculty.
-Teacher Dashboard:
-Daily class routine
-Full month attendance summary
-Lesson plan
-Student Dashboard:
-Student attendance
-Daily classes list
-Schedules
-Student performance bar
-Exam results
-Leave status
-Fees reminder
-Notice board
-Syllabus
-Parent Dashboard:
-Event list
-Statistics (maybe child's performance?)
-Leave status (of their child)
-Homework
-Exam results (of their child)
-People Section (for Admin and possibly Faculty? We'll assume Admin has access to all, and Faculty might have access to teachers and students? But the problem doesn't specify. We'll design the People section for Admin only for now.)
-Student Menu:
-All Students: grid view, filter by class and section. Clicking a student shows a card with details.
-Student List: table view with fields: id, roll no, name, class, gender, status, dob, date of join, actions (edit, delete, collect fees)
-Student Details: card view showing student details, parent details, bank details, results, etc.
-Parent Menu:
-All Parents: filter by parent name and child name.
-Parent List: table view.
-Teacher Menu:
-All Teachers: grid view (similar to students)
-Teacher List: table view
-Teacher Details: card view
-Routine: time table, filter by month, daily class routine details (subject, time, room)
-Academic Section (for Admin and Faculty? We'll design for Admin)
-Classes Menu:
-All Classes: table with id, class, section, number of students, number of subjects, status, actions.
-Schedule Menu:
-Table with id, type, start time, end time, status, actions.
-Class Room Menu: table view.
-Class Routine Menu: table view.
-Subject Menu: table view.
-Section Menu: table view.
-Syllabus Menu: table view.
-Homework Menu: table view.
-Examinations Menu: exam list (table view).
-We'll also need a profile page for each user role where they can edit their profile and change password.
-Implementation:
-
-We'll use HTML, CSS, and JavaScript for the frontend. Since it's a complex system, we'll use a simple structure without a backend for now (just the frontend design).
-
-We'll create:
-
-index.html (login page)
-dashboard.html (but we need to show different dashboards based on role, so we'll use JavaScript to show/hide sections)
-Alternatively, we can create separate HTML files for each dashboard? But to keep it simple, we'll use one HTML file and use JavaScript to show the appropriate dashboard.
-However, due to complexity, we'll create multiple HTML files:
-
-login.html
-admin_dashboard.html
-faculty_dashboard.html
-teacher_dashboard.html
-student_dashboard.html
-parent_dashboard.html
-And for the sections (People, Academic) we'll create separate pages for each? Or we can have them as part of the dashboard? We'll make them as separate pages that are linked from the dashboard.
-
-But note: The problem says "Dashboard is separated by user role", meaning the main page after login is the dashboard. Then the dashboard has links to other sections.
-
-We'll design:
-
-Each dashboard will have a sidebar with navigation links to the sections (like People, Academic, etc.) and a top bar with profile and logout.
-
-We'll create:
-
-For Admin:
-- admin_dashboard.html: the main dashboard with summary widgets.
-- admin_people.html: for the People section (with tabs for Student, Parent, Teacher)
-- admin_academic.html: for the Academic section (with tabs for Classes, Schedule, etc.)
-
-Similarly for other roles, but they might not have all sections.
-However, due to the scope, we'll focus on the frontend design of the login page and the admin dashboard as an example, and then one or two other pages.
-
-Let's start with the login page.
-
-We'll create a simple login form.
-
-Then, we'll create the admin dashboard with the summary widgets.
-
-We'll use Bootstrap for styling to make it responsive and quick.
-
-Steps:
-
-Create login.html
-Create admin_dashboard.html
-We'll use placeholder data and charts (using Chart.js for bar charts).
-
-Let's code accordingly.
+### Models.py:
