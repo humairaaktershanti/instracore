@@ -1,0 +1,36 @@
+Institute Management system
+
+Our project have many user role(Admin, Faculty, Teacher, Student, Finance) but don't have  any Registration form, only Login form.
+The super admin can create a admin and admin will be create Teacher, Student and Finance Account and they will be login using given username and password from admin. All user role have own profile option and they can Edit there own profile and chance them password.
+
+The Dashboard have separate by user role, like Admin dashboard, Teacher dashboard, Student dashboard, and Faculty dashboard.
+
+Admin dashboard have all section summary, like total students and active student, inactive student, total teacher and active teacher, Inactive teacher, total course and active course Inactive course, total Stuff and active stuff, inactive stuff, course overview, active course and inactive course Attendance list(student attendance details, teacher attendance details, staff attendance details ) with bar, All events details, Notice board, Accounts details(Total earning, total expense, total fees collection, student not paid .......
+
+Teacher dashboard have specific teacher daily class routine, full month attendance summary, Lesson plan....
+
+Student dashboard have student attendance, daily classes list, Schedules, student performance bar, Exam results, leave status, Fees reminder, notice board, syllabus 
+
+Parent dashboard have event list, statistics, leave status and home works and 
+Exam results
+
+
+people section---------------
+student menu: All students(student grid, filtered by class and section and student details view in card), student list(view in table, fields like id, roll no, name, class, gender, status dob, date of join, actions and collect fees), student details(show in card like own studesnt details, parants details, bank details, result and other info)
+
+parant menu: All parant(filtered by parant name and child name), Parant list(view in table)
+
+Teacher menu: All teachers(Like all students), teacher list(view in table), teacher details(view in card), routine(time table, filtered by month, daily class routin details with subject name and time and room number)
+
+
+Academic section-----------------
+Classes menu: All classes(view in table, fields like id, class, secton, number of students, number of sub, status and actions).
+schedule(view in table, fields like id, type, start time, end time ,status and actions)
+
+class room menu(view in table)
+class routine menu,
+subject menu(view in table),
+section munu(view in table),
+syllabus menu(view in table),
+home work menu(view in table),
+examinations menu(view exam list),
