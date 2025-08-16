@@ -1,15 +1,15 @@
-## Website for InstraCore: Institute Management System.
+## Website Documentation for InstraCore Institute Management System
 | Since there are multiple user roles and no registration form (only login in *index*), need to design a _login page_ and then _role-based dashboards_ and sections.
 
 ### User Roles:
 ```sudo
-User Roles: Admin, Employee, User/Customar
 
-Sub User Roles:
-	Admin = Admin,
-	Employee = Faculty, HR, Finance, Marketing, IT, Teacher, Others #The "Others" role in Employee list is basically a catch-all category — (e.g., librarian, security guard, maintenance worker, guest lecturer, etc.)
-	User/Customar = Student
-```
+User Roles: Admin, Employee, User/Customer
+
+Sub-Roles:
+  - **Admin**: Admin
+  - **Employee**: Faculty, HR, Finance, Marketing, IT, Teacher, Others (e.g., librarian, security guard, guest lecturer)
+  - **User/Customer**: Student
 
 ### Dashboard based on Roles:
 
@@ -153,7 +153,7 @@ Sub User Roles:
 > Need to manage student fee collection and other option to get there expanse.
 > Need to prepare monthly expanse sheet for every employee [_Admin_ and _Finance_ can view summary on dashboard]
 > use Bootstrap for styling
-> All actions [CRUD] are saved on a separate model
+> All actions [CRUD] are saved on a separate model (trac id using UUID)
 > All actions send on Admin or role based dashboard as notifications
 > Manage notifications using this separate model
 
