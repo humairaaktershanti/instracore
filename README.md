@@ -9,6 +9,86 @@ The system provides dashboards and features tailored to each role
 
 ------------------------------------------------------------------------
 
+## Project Structure
+
+instracore/
+├── manage.py
+├── requirements.txt
+└── instracore/
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    ├── wsgi.py
+    └── asgi.py
+├── AuthApp/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   ├── forms.py
+│   └── templates/
+│       └── AuthApp/
+│           ├── master.html
+│           ├── login.html
+│           ├── register.html
+│           ├── profile.html
+│           └── notifications.html
+├── AdminApp/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── templates/
+│       └── AdminApp/
+│           ├── dashboard.html
+│           ├── users.html
+│           ├── courses.html
+│           ├── attendance.html
+│           ├── events.html
+│           ├── accounts.html
+│           └── reports.html
+├── EmployeeApp/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── templates/
+│       └── EmployeeApp/
+│           ├── faculty_dashboard.html
+│           ├── hr_dashboard.html
+│           ├── finance_dashboard.html
+│           ├── teacher_dashboard.html
+│           └── other_dashboard.html
+├── StudentApp/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── templates/
+│       └── StudentApp/
+│           ├── dashboard.html
+│           ├── academics.html
+│           ├── finance.html
+│           ├── resources.html
+│           ├── certificates.html
+│           └── courses.html
+└── static/
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── main.js
+    └── images/
+
+---
+
 ## User Roles & Access
 
 ### Roles:
