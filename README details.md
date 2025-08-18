@@ -9,17 +9,17 @@ The system provides dashboards and features tailored to each role
 
 ------------------------------------------------------------------------
 
-## Project Structure
+```
 
 instracore/
 ├── manage.py
 ├── requirements.txt
-└── instracore/
-    ├── __init__.py
-    ├── settings.py
-    ├── urls.py
-    ├── wsgi.py
-    └── asgi.py
+├── instracore/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
 ├── AuthApp/
 │   ├── __init__.py
 │   ├── admin.py
@@ -86,6 +86,8 @@ instracore/
     ├── js/
     │   └── main.js
     └── images/
+
+```
 
 ---
 
