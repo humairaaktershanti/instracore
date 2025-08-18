@@ -29,15 +29,15 @@ Admin:
 		can export all data [over role]
 	User - User Management
 		Show all user Student, Employee, Total
-		Show pending Jon Applications for accept or related > if accept then create auto accept as per role		
-		If user accept or related then delete job accept model (save/create user - customUserModel)
+		Show pending Job Applications for accept or related > if accept then create auto accept as per role
+		If user accept or related then delete job accept model (save/create user - customUserModel) [just if sub user = Teacher, need Faculty accept too]
 		Show All kind of User a short and all view list (Every-types of User list)
 		CRUD on User list (edit, delete, deactivate)
 	Courses
 		Show all Teacher base on course
 		View top sell course [Graph]
 		View all active and closed Courses
-		- course base student list		
+		- course base student list
 	Attendance
 		Show all Student, Employee, Attendance on [Graph], and list
 		View monthly Attendance from Employee list
@@ -46,8 +46,8 @@ Admin:
 	Accounts
 		Show all Accounts related info in brodly, view on many way like some charts (js, data from django views), Table and more, Daily, Monthly, Yearly Base
 	Reports
-		Show Daily, Monthly, Yearly Base All Reports and can download if want (auto genareted from view or js)		
-		
+		Show Daily, Monthly, Yearly Base All Reports and can download if want (auto genareted from view or js)
+
 HR:
 	Power:
 		Create Job Post for any Employee and Admin
@@ -78,5 +78,34 @@ HR:
 		Can call Interview > Accept or Reject
 		If accept on Interview then wating for admin accept (permition) (save job accept model)
 		If user accept or related then delete from here (save main customUserModel)
+	Reports
+		Show Daily, Monthly, Yearly Base role base Reports and can download if want (auto genareted from view or js)
+
+Faculty:
+	Power:
+		Need to accept or reject Teacher (after HR and admin accept)
+		Need to accept or reject Course that add Teacher (after Teacher add new courses)
+		Can Create new Course [not need any permition but need need assign minimum (choice field) one Teacher [max=max]]
+	DeshBoard
+		Show all summary (Total Teachers, Total Student, Active Courses, Pending Requests [course]) [clickable and related view all page (View page contain CRUD)]
+		Graph chart - Course Enrollment, Course Distribution
+		View List - Recent Activities, Pending Requests
+		Show monthly weekend days (Calendar) [BD std]
+		can export all data [over role]
+	Teachers
+		Show all Teachers
+		Show All kind of Teachers a short and all view list
+		CRUD on Teachers (edit, delete, deactivate)
+	Course
+		Show all Course
+		Show All kind of Course a short and all view list
+		CRUD on Course (edit, delete, deactivate)
+	Student
+		Show all Student
+		Show All kind of Student a short and all view list
+		CRUD on Student (edit, delete, deactivate)
+	Requests
+		Show all course pending request
+		CRUD on Requests (accept, update or delete)
 	Reports
 		Show Daily, Monthly, Yearly Base role base Reports and can download if want (auto genareted from view or js)
