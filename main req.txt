@@ -43,8 +43,6 @@ Admin:
 		View monthly Attendance from Employee list
 	Events & Notices
 		- Full CRUD on Events & Notices (Dayly, Monthly, Fully)
-	Accounts
-		Show all Accounts related info in brodly, view on many way like some charts (js, data from django views), Table and more, Daily, Monthly, Yearly Base
 	Reports
 		Show Daily, Monthly, Yearly Base All Reports and can download if want (auto genareted from view or js)
 
@@ -107,5 +105,38 @@ Faculty:
 	Requests
 		Show all course pending request
 		CRUD on Requests (accept, update or delete)
+	Reports
+		Show Daily, Monthly, Yearly Base role base Reports and can download if want (auto genareted from view or js)
+
+Teacher:
+	Power:
+		Add new Course [she/he or can extra teacher for a course] (need Faculty accepted)
+		Can make class routine
+		need to make lesson plan
+		make and get assign
+	DeshBoard
+		Show all summary (Active Courses, Total Student, Pending Tasks [assignment related], Classes This Week) [Just view]
+		Graph chart - Today's Schedule, Attendance Summary
+		View List - Recent Activities, Pending Tasks
+		Show monthly weekend days (Calendar) [BD std]
+	Class routine
+		Show there own added routine
+		CRUD on class routine (edit, delete, change)
+	Attendance
+		Show Previous days Attendance
+		Show monthly Attendance
+		Show course base Attendance
+		Get todays [course base] Attendance
+	Lesson Plan
+		Show monthly and course base Lesson Plan
+		make new course base Lesson Plan
+	Course
+		Show all course (only for that Teacher)
+		Create New Course
+		CRUD on Course (update or delete)
+	Assignments
+		View Old Assignments report [course base]
+		Create New Course [course base]
+		CRUD on there own course
 	Reports
 		Show Daily, Monthly, Yearly Base role base Reports and can download if want (auto genareted from view or js)
