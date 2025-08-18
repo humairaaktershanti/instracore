@@ -9,6 +9,8 @@ The system provides dashboards and features tailored to each role
 
 ------------------------------------------------------------------------
 
+```
+
 instracore/
 ├── manage.py
 ├── requirements.txt
@@ -84,6 +86,8 @@ instracore/
     ├── js/
     │   └── main.js
     └── images/
+
+```
 
 ---
 
