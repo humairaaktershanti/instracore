@@ -1,0 +1,46 @@
+Auth:
+	if not have any User then open setup.html and can create a Admin [other-wise open index.html (for Guest/Non Login)]
+	
+All User:
+	Role Base Nav-Bar, with Company-LOGO, collapsible Profile icon (for user with profile picture)
+	if mouse hobar on Profile icon, then open Profile, Logout (for all) [create Admin, Create User, Admin Panel - Admin] [and other on role base]
+	Need a static Footer (just year need to use js)
+	Role Base Side panel
+	Add this is a single master.html djnago template with all link (CSS, JS, etc)
+	
+	Comon On DeshBoard:
+		There own Recent Activities [Admin can view all]
+		Notice Board [This is catagory base]
+		Upcoming Events  [This is catagory base]
+		
+Admin:
+	Power:
+		Create any Employee and Admin account
+		Can CRUD (Delete or update) on every user
+	DeshBoard
+		Show all summary (Student + Employee + Admin)
+		Quick Actions [Create Admin, Create Employee, add Notice, add Events]
+		Attendance Overview [Staff, Teacher, Student - Graph]
+		Course Overview [Graph]
+		Show monthly weekend days (Calendar) [BD std]
+		Financial Overview
+		Recent activities, Notice board, Upcoming Events [CRUD]	(shortly)	
+		can export all data
+	User - User Management
+		Show all user Student, Employee, Total
+		Show All kind of User a short and all view list (Every-types of User list)
+		CRUD on User list (edit, delete, deactivate)
+	Courses
+		Show all Teacher base on course
+		View top sell course [Graph]
+		View all active and closed Courses
+		- course base student list		
+	Attendance
+		Show all Student, Employee, Attendance on [Graph], and list
+		View monthly Attendance from Employee list
+	Events & Notices
+		- Full CRUD on Events & Notices (Dayly, Monthly, Fully)
+	Accounts
+		Show all Accounts related info in brodly, view on many way like some charts (js, data from django views), Table and more, Daily, Monthly, Yearly Base
+	Reports
+		Show Daily, Monthly, Yearly Base All Reports and can download if want (auto genareted from view or js)
