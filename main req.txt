@@ -3,7 +3,7 @@ Auth:
 	
 All User:
 	Role Base Nav-Bar, with Company-LOGO, collapsible Profile icon (for user with profile picture)
-	if mouse hobar on Profile icon, then open Profile, Logout (for all) [create Admin, Create User, Admin Panel - Admin] [and other on role base]
+	if mouse hobar on Profile icon, then open Profile, Logout (for all) [create Admin, Create User, Admin Panel - Admin] [and other on role base], day-night toggle (JS)
 	Need a static Footer (just year need to use js)
 	Role Base Side panel
 	Add this is a single master.html djnago template with all link (CSS, JS, etc)
@@ -17,6 +17,7 @@ Admin:
 	Power:
 		Create any Employee and Admin account
 		Can CRUD (Delete or update) on every user
+		default password for admin created account = there own role (eg.: HR, Admin, Teacher)
 	DeshBoard
 		Show all summary (Student + Employee + Admin)
 		Quick Actions [Create Admin, Create Employee, add Notice, add Events]
@@ -24,10 +25,12 @@ Admin:
 		Course Overview [Graph]
 		Show monthly weekend days (Calendar) [BD std]
 		Financial Overview
-		Recent activities, Notice board, Upcoming Events [CRUD]	(shortly)	
-		can export all data
+		Recent activities, Notice board, Upcoming Events [CRUD]	(shortly)
+		can export all data [over role]
 	User - User Management
 		Show all user Student, Employee, Total
+		Show pending Jon Applications for accept or related > if accept then create auto accept as per role		
+		If user accept or related then delete job accept model (save/create user - customUserModel)
 		Show All kind of User a short and all view list (Every-types of User list)
 		CRUD on User list (edit, delete, deactivate)
 	Courses
@@ -43,4 +46,37 @@ Admin:
 	Accounts
 		Show all Accounts related info in brodly, view on many way like some charts (js, data from django views), Table and more, Daily, Monthly, Yearly Base
 	Reports
-		Show Daily, Monthly, Yearly Base All Reports and can download if want (auto genareted from view or js)
+		Show Daily, Monthly, Yearly Base All Reports and can download if want (auto genareted from view or js)		
+		
+HR:
+	Power:
+		Create Job Post for any Employee and Admin
+		Can call for Interview or reject them
+		If interview is passed, then can hire Employee/Admin
+	DeshBoard
+		Show all summary (Employees, Active Job Posts, Applications, Scheduled Interviews) [clickable and related view all page (View page contain CRUD)]
+		Graph chart - Applications by Job Post, Employee Distribution
+		View List - Recent Activities, Upcoming Interviews
+		Show monthly weekend days (Calendar) [BD std]
+		can export all data [over role]
+	Employees
+		Show all Employee
+		Show All kind of User a short and all view list (Every-types of User list)
+		CRUD on User [without: Admin, HR, and Students] (edit, delete, deactivate)
+	Job Posts
+		Post new jobs [For any role (Admin and Employee)]
+		View All Post on List
+		CRUD on any job post
+	Applications
+		Show all posted Job list [clickable]
+		- minimum req option: Position Title, Job Description, Minimum Requirements, Selary Range, Location, Language, Availability, Application Instructions, etc
+		click to open that jobs application list [default pending]
+		Can call Interview
+		If accept on Interview then wating for admin accept (permition)
+	Interviews
+		Show all pending Interview job postd in list
+		Can call Interview > Accept or Reject
+		If accept on Interview then wating for admin accept (permition) (save job accept model)
+		If user accept or related then delete from here (save main customUserModel)
+	Reports
+		Show Daily, Monthly, Yearly Base role base Reports and can download if want (auto genareted from view or js)
