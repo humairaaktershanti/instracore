@@ -138,5 +138,26 @@ Teacher:
 		View Old Assignments report [course base]
 		Create New Course [course base]
 		CRUD on there own course
-	Reports
-		Show Daily, Monthly, Yearly Base role base Reports and can download if want (auto genareted from view or js)
+
+Student:
+	Power:
+		Can create there new account [only student]
+		Get new course [need Faculty accept]
+		Apply for certificates
+	DeshBoard
+		Show all summary (Active Courses, Attendance Rate, Certificates [offline, online], Unpaid Fees) [Just view]
+		View List - Upcoming Classes, Recent Results, My Courses
+		Show monthly weekend days (Calendar) [BD std]
+	Academics
+		Pass Rate, Total Classes, Achievements
+		Attendance, Exam Results, Class Schedule, Leave Status etc
+	Finance [for future impliment]
+		-
+	Resources
+		Syllabus, Course Materials, Notice Board, Library, etc
+	Certificates
+		Certificates Earned, Completed Courses, In Progress
+		Earned Certificates, Pending Applications, Apply for Certificate etc
+	Courses
+		Filter by Course Type - All, Online, Offline, Regular, Deploma etc
+		Available Courses, My Enrollments
