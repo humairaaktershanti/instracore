@@ -1,19 +1,21 @@
 Auth:
 	if not have any User then open setup.html and can create a Admin [other-wise open index.html (for Guest/Non Login)]
-	
+
 All User:
 	Role Base Nav-Bar, with Company-LOGO, collapsible Profile icon (for user with profile picture)
 	if mouse hobar on Profile icon, then open Profile, Logout (for all) [create Admin, Create User, Admin Panel - Admin] [and other on role base], day-night toggle (JS)
 	Need a static Footer (just year need to use js)
 	Role Base Side panel
 	Add this is a single master.html djnago template with all link (CSS, JS, etc)
-	
+
 	Comon On DeshBoard:
 		There own Recent Activities [Admin can view all]
 		Notice Board [This is catagory base]
 		Upcoming Events  [This is catagory base]
 		All user can delete there profile from update section [but there info are save on another safe model for future (role base)]
-		
+		All Employee have a Attendance bar on let nev ber, there thay can add there Attendance, view monthly and yearly Attendance have or not.
+		Employee just can Attendance todays one (Attend yes:no)
+
 Admin:
 	Power:
 		Create any Employee and Admin account
